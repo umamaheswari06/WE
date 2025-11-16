@@ -1,0 +1,63 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Adaptive Quiz</title> 
+    <style>         body { display: flex; justify-content: center; align-items: center; height: 100vh; font-family: Arial; background: #f4f4f9; } 
+        .container { background: white; padding: 20px; text-align: center; border-radius: 
+8px; width: 300px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }         button { width: 100%; padding: 10px; margin: 5px 0; background-color: #5c67f2; color: white; border: none; border-radius: 5px; cursor: pointer; } 
+        .progress-bar { background: #ccc; height: 20px; border-radius: 5px; overflow: hidden; margin-top: 10px; } 
+        .progress { background: #4CAF50; height: 100%; width: 0; transition: width 0.5s; color: white; text-align: center; } 
+    </style> 
+</head> 
+<body> 
+    <div class="container"> 
+        <h2 id="question"></h2> 
+        <div id="choices"></div> 
+        <button id="next" style="display:none" onclick="next()">Next</button> 
+        <div id="result" style="display:none"> 
+            <h2>Statistics</h2> 
+            <p id="score"></p> 
+            <div class="progress-bar"><div id="progress" class="progress"></div></div> 
+            <p id="difficulty"></p> 
+        </div>     </div> 
+ 
+    <script>         const qs = { 
+            easy: [{q: "2 + 2?", c: ["3", "4"], a: 1}, {q: "Capital of France?", c: ["Paris", 
+"London"], a: 0}],             medium: [{q: "5 * 6?", c: ["30", "31"], a: 0}, {q: "'1984' author?", c: ["Orwell", 
+"Huxley"], a: 0}], 
+            hard: [{q: "√144?", c: ["12", "13"], a: 0}, {q: "Derivative of x²?", c: ["x", "2x"], a: 1}]         }; 
+ 
+        let difficulty = "medium", idx = 0, score = 0, total = 0, difficultyScore = 0; 
+ 
+        function load() { 
+            const current = qs[difficulty][idx]; 
+            document.getElementById("question").textContent = current.q; 
+            document.getElementById("choices").innerHTML = current.c.map((choice, i)  
+  
+                `<button onclick="check(${i})">${choice}</button>`).join('');             document.getElementById("next").style.display = "none"; 
+        } 
+ 
+        function check(i) { 
+            const current = qs[difficulty][idx];             if (i === current.a) {                 score++;                 difficulty = difficulty === "easy" ? "medium" : "hard"; 
+            } else {                 difficulty = difficulty === "hard" ? "medium" : "easy"; 
+            } 
+            difficultyScore += difficulty === "easy" ? 1 : difficulty === "medium" ? 2 : 3;             total++; 
+            document.getElementById("next").style.display = "block"; 
+        } 
+ 
+        function next() {             idx++; 
+            if (idx >= qs[difficulty].length) showResults();             else load(); 
+        } 
+ 
+        function showResults() { 
+            document.querySelector(".container").innerHTML = ` 
+                <h2>Statistics</h2> 
+                <p>Your score: ${score} / ${total} (${(score / total) * 100}%)</p>                 <div class="progress-bar"><div class="progress" style="width:${(score / total) * 100}%">${(score / total) * 100}%</div></div> 
+                <p>Average Difficulty: ${(difficultyScore / total).toFixed(2)}</p> 
+            `; 
+        } 
+ 
+        load();     </script> 
+</body> </html> 

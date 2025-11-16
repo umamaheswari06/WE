@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Webpage</title>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Embedded CSS -->
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        header, footer {
+            background: #333;
+            color: white;
+            padding: 15px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+        main {
+            background: white;
+            padding: 20px;
+            margin: 20px auto;
+            width: 80%;
+            border-radius: 10px;
+        }
+        section {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body style="background-image:url('bg.jpg'); background-size:cover;">
+
+    <header>
+        <h1 style="color:#ff6347;">Styled Webpage</h1> <!-- Inline CSS -->
+        <nav>
+            <ul>
+                <li><a href="#section1">Section 1</a></li>
+                <li><a href="#section2">Section 2</a></li>
+                <li><a href="#section3">Section 3</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="section1">
+            <h2>Section 1</h2>
+            <p>This section uses inline CSS background.</p>
+        </section>
+
+        <section id="section2">
+            <h2>Section 2</h2>
+            <p>This section uses embedded CSS.</p>
+        </section>
+
+        <section id="section3">
+            <h2>Section 3</h2>
+            <p>This section uses external CSS.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Footer content here</p>
+    </footer>
+
+</body>
+</html>

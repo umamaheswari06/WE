@@ -1,0 +1,15 @@
+    body {     font-family: Arial, sans-serif;     background-color: #f0f8ff;     display: flex;     justify-content: center;     align-items: center;     height: 100vh;     margin: 0; 
+} 
+.weather-widget {     text-align: center;     background-color: #87ceeb;     padding: 20px;     border-radius: 10px; 
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);     width: 300px; 
+} 
+#city-input {     padding: 10px;     width: 80%;     margin-bottom: 10px;     border: none;     border-radius: 5px; 
+} 
+#fetch-weather {     padding: 10px 20px;     background-color: #4CAF50; 
+    color: white;     border: none;     border-radius: 5px;     cursor: pointer; 
+} 
+#weather-info {     margin-top: 20px; 
+} 
+#temperature, #description {     font-size: 18px;     margin: 5px 0; 
+} 
+ 

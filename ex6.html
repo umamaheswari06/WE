@@ -1,0 +1,51 @@
+
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Event Handling Example</title> 
+    <style>         body { 
+            font-family: Arial, sans-serif;             display: flex;             flex-direction: column;             align-items: center;             justify-content: center;             height: 100vh; 
+            background-color: #f4f4f9; 
+        } 
+        .container {             text-align: center; 
+        } 
+        .btn { 
+            padding: 10px 20px;             background-color: #5c67f2; 
+            color: white;             border: none;             border-radius: 5px;             cursor: pointer;             transition: background-color 0.2s; 
+        } 
+        .btn:hover {             background-color: #7a85ff; 
+        }         form { 
+            margin-top: 20px; 
+        } 
+        input[type="text"] {             padding: 10px;             margin: 10px 0;             border: 1px solid #ccc; 
+            border-radius: 5px; 
+        }
+        input[type="submit"] {             padding: 10px 20px;             background-color: #4CAF50; 
+            color: white;             border: none;             border-radius: 5px;             cursor: pointer; 
+        } 
+        input[type="submit"]:hover { 
+            background-color: #45a049; 
+        } 
+    </style> 
+</head> 
+<body> 
+    <div class="container"> 
+        <h1>Event Handling Example</h1> 
+        <button class="btn" id="colorButton">Click Me!</button> 
+        <form id="myForm"> 
+            <input type="text" id="name" name="name" placeholder="Enter your name"> 
+            <input type="submit" value="Submit"> 
+        </form>     </div> 
+ 
+    <script> 
+        document.getElementById("colorButton").addEventListener("click", function() {             this.style.backgroundColor = this.style.backgroundColor === "red" ? "#5c67f2" : "red"; 
+        }); 
+        document.getElementById("myForm").addEventListener("submit", function(event) {             event.preventDefault(); 
+            alert("Form submitted by " + document.getElementById("name").value); 
+        }); 
+    </script> 
+</body> </html> 
+ 
+ 
